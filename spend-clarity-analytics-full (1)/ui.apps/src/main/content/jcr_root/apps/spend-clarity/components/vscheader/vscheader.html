@@ -1,0 +1,99 @@
+<!--/* VSC Header — Spend Clarity Enterprise (2026 Figma).
+     Row 1: VISA Spend Clarity | Enterprise            [Menu toggle < 900px]
+     Row 2: Home · My spend ▾ · Cards · Search · Reports ▾ · Administration ▾
+                                                        👤 Andrew ▾
+     Pattern: WAI-ARIA APG "disclosure navigation". Carets are <button
+     aria-expanded>; menus are lists of links (no role="menu").
+     IDs / aria-controls are assigned by _vscheader.js so the component can
+     appear more than once on a page without duplicate IDs. */-->
+<sly data-sly-test.pageName="${currentPage.name || 'cards'}"/>
+<sly data-sly-test.isCards="${pageName == 'cards' || pageName == 'virtual-cards'}"/>
+<sly data-sly-test.userName="${properties.userName || 'Andrew'}"/>
+<header class="cmp-vscheader" id="${properties.id}" data-cmp-vscheader>
+    <a class="cmp-vscheader__skip" href="#main-content" data-cmp-vscheader-skip>Skip to main content</a>
+    <div class="cmp-vscheader__inner">
+
+        <!-- ============ Row 1: brand ============ -->
+        <div class="cmp-vscheader__brand-row">
+            <a href="#" class="cmp-vscheader__brand" data-cmp-data-layer='{"component-uuid":"vscheader-brand","componenttype":"link","dc:title":"Brand - Home","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>
+                <span class="cmp-vscheader__visa">VISA</span>
+                <span class="cmp-vscheader__product">Spend Clarity</span>
+                <span class="cmp-vscheader__sep" aria-hidden="true"></span>
+                <span class="cmp-vscheader__edition">Enterprise</span>
+                <span class="cmp-visually-hidden">, home</span>
+            </a>
+            <button type="button" class="cmp-vscheader__menu-toggle" aria-expanded="false" data-cmp-vscheader-toggle data-cmp-data-layer='{"component-uuid":"vscheader-menu-toggle","componenttype":"button","dc:title":"Mobile Menu Toggle","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                </svg>
+                <span class="cmp-vscheader__menu-label">Menu</span>
+            </button>
+        </div>
+
+        <!-- ============ Row 2: tabs LEFT + account RIGHT ============ -->
+        <div class="cmp-vscheader__nav-row" data-cmp-vscheader-panel>
+            <nav class="cmp-vscheader__nav" aria-label="Primary">
+                <ul class="cmp-vscheader__nav-list">
+                    <li class="cmp-vscheader__item">
+                        <a href="#" class="cmp-vscheader__nav-link" data-cmp-data-layer='{"component-uuid":"vscheader-nav-home","componenttype":"link","dc:title":"Nav - Home","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>Home</a>
+                    </li>
+                    <li class="cmp-vscheader__item">
+                        <button type="button" class="cmp-vscheader__nav-link" aria-expanded="false" data-cmp-vscheader-trigger data-cmp-data-layer='{"component-uuid":"vscheader-dd-myspend","componenttype":"button","dc:title":"Nav dropdown - My spend","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>
+                            <span>My spend</span>
+                            <svg class="cmp-vscheader__caret" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true" focusable="false"><path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <ul class="cmp-vscheader__submenu" hidden>
+                            <li><a href="#" class="cmp-vscheader__submenu-link" data-cmp-data-layer='{"component-uuid":"vscheader-submenu-mytxn","componenttype":"link","dc:title":"Submenu - My transactions","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>My transactions</a></li>
+                            <li><a href="#" class="cmp-vscheader__submenu-link" data-cmp-data-layer='{"component-uuid":"vscheader-submenu-myexp","componenttype":"link","dc:title":"Submenu - My expense reports","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>My expense reports</a></li>
+                        </ul>
+                    </li>
+                    <li class="cmp-vscheader__item">
+                        <a href="cards.html" class="cmp-vscheader__nav-link${isCards ? ' cmp-vscheader__nav-link--active' : ''}" data-cmp-data-layer='{"component-uuid":"vscheader-nav-cards","componenttype":"link","dc:title":"Nav - Cards","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'
+                           data-sly-attribute.aria-current="${isCards ? 'page' : ''}">Cards</a>
+                    </li>
+                    <li class="cmp-vscheader__item">
+                        <a href="#" class="cmp-vscheader__nav-link" data-cmp-data-layer='{"component-uuid":"vscheader-nav-search","componenttype":"link","dc:title":"Nav - Search","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>Search</a>
+                    </li>
+                    <li class="cmp-vscheader__item">
+                        <button type="button" class="cmp-vscheader__nav-link" aria-expanded="false" data-cmp-vscheader-trigger data-cmp-data-layer='{"component-uuid":"vscheader-dd-reports","componenttype":"button","dc:title":"Nav dropdown - Reports","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>
+                            <span>Reports</span>
+                            <svg class="cmp-vscheader__caret" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true" focusable="false"><path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <ul class="cmp-vscheader__submenu" hidden>
+                            <li><a href="#" class="cmp-vscheader__submenu-link" data-cmp-data-layer='{"component-uuid":"vscheader-submenu-runreport","componenttype":"link","dc:title":"Submenu - Run a report","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>Run a report</a></li>
+                            <li><a href="#" class="cmp-vscheader__submenu-link" data-cmp-data-layer='{"component-uuid":"vscheader-submenu-schedreports","componenttype":"link","dc:title":"Submenu - Scheduled reports","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>Scheduled reports</a></li>
+                        </ul>
+                    </li>
+                    <li class="cmp-vscheader__item">
+                        <button type="button" class="cmp-vscheader__nav-link" aria-expanded="false" data-cmp-vscheader-trigger data-cmp-data-layer='{"component-uuid":"vscheader-dd-admin","componenttype":"button","dc:title":"Nav dropdown - Administration","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>
+                            <span>Administration</span>
+                            <svg class="cmp-vscheader__caret" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true" focusable="false"><path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <ul class="cmp-vscheader__submenu" hidden>
+                            <li><a href="#" class="cmp-vscheader__submenu-link" data-cmp-data-layer='{"component-uuid":"vscheader-submenu-users","componenttype":"link","dc:title":"Submenu - Users","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>Users</a></li>
+                            <li><a href="#" class="cmp-vscheader__submenu-link" data-cmp-data-layer='{"component-uuid":"vscheader-submenu-expcat","componenttype":"link","dc:title":"Submenu - Expense categories","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>Expense categories</a></li>
+                            <li><a href="#" class="cmp-vscheader__submenu-link" data-cmp-data-layer='{"component-uuid":"vscheader-submenu-spendctrl","componenttype":"link","dc:title":"Submenu - Spend controls","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>Spend controls</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <ul class="cmp-vscheader__actions">
+                <li class="cmp-vscheader__item">
+                    <button type="button" class="cmp-vscheader__nav-link cmp-vscheader__profile" aria-expanded="false" data-cmp-vscheader-trigger data-cmp-data-layer='{"component-uuid":"vscheader-profile-menu","componenttype":"button","dc:title":"Profile dropdown","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>
+                        <svg class="cmp-vscheader__profile-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+                            <path d="M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5z" fill="currentColor"/>
+                        </svg>
+                        <span>${userName}<span class="cmp-visually-hidden">, account menu</span></span>
+                        <svg class="cmp-vscheader__caret" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true" focusable="false"><path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <ul class="cmp-vscheader__submenu cmp-vscheader__submenu--end" hidden>
+                        <li><a href="#" class="cmp-vscheader__submenu-link" data-cmp-data-layer='{"component-uuid":"vscheader-submenu-profile","componenttype":"link","dc:title":"Submenu - Profile settings","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>Profile settings</a></li>
+                        <li><a href="#" class="cmp-vscheader__submenu-link" data-cmp-data-layer='{"component-uuid":"vscheader-submenu-signout","componenttype":"link","dc:title":"Submenu - Sign out","siteSection":"spend-clarity","productline":"spend-clarity","productname":"Spend Clarity Enterprise"}'>Sign out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</header>

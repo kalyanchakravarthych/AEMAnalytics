@@ -1,0 +1,23 @@
+<!--/*
+    VSC Spend Clarity — custom header libs.
+    - Loads the base SC stylesheet via Core Components clientlib template.
+    - Boots the adobeDataLayer BEFORE anything else so page-view and
+      component-show events that fire during initial parse are not lost.
+    - Loads the Adobe Launch tag (hardcoded placeholder URL; the
+      production URL is injected at AEM dispatcher / vhost level so the
+      tag URL can be swapped per environment without a code change).
+      Change the href below if your organisation hosts Launch elsewhere.
+*/-->
+<sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.css @ categories='spend-clarity.base'}"/>
+</sly>
+
+<!-- Adobe Analytics / Launch bootstrap: initialise the data layer
+     queue BEFORE Launch loads, so events pushed during DOM parse are
+     captured and replayed when the library is ready. -->
+<script>window.adobeDataLayer = window.adobeDataLayer || [];</script>
+
+<!-- Adobe Launch tag (hardcoded placeholder - replace with your tenant URL) -->
+<script src="//assets.adobedtm.com/launch-ENstub-development.min.js" async></script>
+
+<sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}"/>
